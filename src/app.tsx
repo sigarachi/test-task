@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { ThemeProvider } from "@shared/ui/theme";
+import { Router } from "@shared/router";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    </>
-  )
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
