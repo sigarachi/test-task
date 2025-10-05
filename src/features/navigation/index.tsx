@@ -9,6 +9,7 @@ import { UserIcon } from "@shared/ui/icons/user-icon";
 import { Input } from "@shared/ui/input";
 import { SearchIcon } from "@shared/ui/icons/search-icon";
 import { useState } from "react";
+import ClickAwayListener from "react-click-away-listener";
 
 export const Navigation = () => {
   const [isSearching, setIsSearching] = useState(false);
@@ -19,17 +20,8 @@ export const Navigation = () => {
   return (
     <>
       <NavigationWrapper>
-        <FlexLayout width="100%" align="center" justify="start">
-          <Logo />
-        </FlexLayout>
-        <FlexLayout
-          width="100%"
-          align="center"
-          justify={isMobile ? "flex-end" : "center"}
-        >
-          {isMobile ? (
-            <SearchIcon width={16} height={16} color={colors.accent.base} />
-          ) : (
+        {isSearching && (
+          <ClickAwayListener onClickAway={() => setIsSearching(false)}>
             <Input
               width="100%"
               leftIcon={
@@ -37,16 +29,54 @@ export const Navigation = () => {
               }
               placeholder="Поиск"
             />
-          )}
-        </FlexLayout>
-        <FlexLayout width="100%" align="center" justify="flex-end" gap="8px">
-          <UserIcon width={24} height={24} color={colors.accent.base} />
-          {!isMobile && (
-            <TextBlock variant="body1" textAlign="center">
-              Войти
-            </TextBlock>
-          )}
-        </FlexLayout>
+          </ClickAwayListener>
+        )}
+        {!isSearching && (
+          <>
+            <FlexLayout width="100%" align="center" justify="start">
+              <Logo />
+            </FlexLayout>
+            <FlexLayout
+              width="100%"
+              align="center"
+              justify={isMobile ? "flex-end" : "center"}
+            >
+              {isMobile ? (
+                <SearchIcon
+                  width={16}
+                  height={16}
+                  color={colors.accent.base}
+                  onClick={() => setIsSearching(true)}
+                />
+              ) : (
+                <Input
+                  width="100%"
+                  leftIcon={
+                    <SearchIcon
+                      width={16}
+                      height={16}
+                      color={colors.accent.base}
+                    />
+                  }
+                  placeholder="Поиск"
+                />
+              )}
+            </FlexLayout>
+            <FlexLayout
+              width="100%"
+              align="center"
+              justify="flex-end"
+              gap="8px"
+            >
+              <UserIcon width={24} height={24} color={colors.accent.base} />
+              {!isMobile && (
+                <TextBlock variant="body1" textAlign="center">
+                  Войти
+                </TextBlock>
+              )}
+            </FlexLayout>
+          </>
+        )}
       </NavigationWrapper>
       <Divider />
     </>

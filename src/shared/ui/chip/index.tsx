@@ -10,6 +10,7 @@ import type { ChipProps, Option } from "./interfaces";
 import { CheckIcon } from "../icons/check-icon";
 import { ArrowIcon } from "../icons/arrow-icon";
 import { useTheme } from "@emotion/react";
+import { TextBlock } from "../text";
 
 export const Chip: React.FC<ChipProps> = ({
   onSelect,
@@ -47,7 +48,11 @@ export const Chip: React.FC<ChipProps> = ({
         onClick={() => setIsOpened((prev) => !prev)}
       >
         <div>
-          {selectedOption.current ? selectedOption.current.title : children}
+          {selectedOption.current ? (
+            <TextBlock variant="h6">{selectedOption.current.title}</TextBlock>
+          ) : (
+            children
+          )}
         </div>
         <div>
           <ArrowIcon

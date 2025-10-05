@@ -28,6 +28,8 @@ export const ChipButton = styled.div<{ isOpened: boolean }>`
 
 export const ChipDropdownContent = styled.div<{ isOpened: boolean }>`
   width: 100%;
+
+  top: 100%;
   display: ${(props) => (props.isOpened ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
