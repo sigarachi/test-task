@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const CardWrapper = styled.div`
-  width: 100%;
+  width: 227px;
   height: 328px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,6 @@ export const CardWrapper = styled.div`
 `;
 
 export const CardTopWrapper = styled.div`
-  width: 100%;
   display: flex;
   position: relative;
 
@@ -30,11 +29,11 @@ export const CardTopWrapper = styled.div`
 `;
 
 export const CardImageWrapper = styled.div`
-  width: 100%;
-
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.stroke.cardBorder};
+
+  border-radius: 16px 16px 0px 0;
 
   display: flex;
   flex-direction: row;
@@ -51,8 +50,6 @@ export const CardTopButtonWrapper = styled.div`
 `;
 
 export const CardBodyWrapper = styled.div`
-  width: 100%;
-
   padding: 16px 8px;
 
   flex: 1;

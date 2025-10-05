@@ -4,7 +4,7 @@ export interface CardFooterButtonProps {
 }
 
 export interface CardProps extends React.PropsWithChildren {
-  title: string;
+  title: React.ReactElement;
   footerButton?: CardFooterButtonProps;
   isCardFavorite: boolean;
   onFavorite: (value: boolean) => void;

@@ -6,7 +6,6 @@ export const ChipWrapper = styled.div`
 `;
 
 export const ChipButton = styled.div<{ isOpened: boolean }>`
-  min-width: 123px;
   padding: 9px 14px;
   background-color: ${({ theme, isOpened }) =>
     isOpened ? theme.colors.control.hover : theme.colors.control.base};

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<{ width?: string }>`
+  width: ${({ width }) => width};
   display: flex;
   border-radius: 10px;
   padding: 15px;

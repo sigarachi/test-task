@@ -25,7 +25,8 @@
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@pages/*": ["./src/pages/*"],
-      "@shared/*": ["./src/shared/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["src", "@types"]
