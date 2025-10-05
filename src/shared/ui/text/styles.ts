@@ -12,6 +12,8 @@ export const TextWrapper = styled("div")<
     switch (textColor) {
       case "link":
         return theme.colors.accent.base;
+      case "description":
+        return theme.colors.text.secondary;
       default:
         return theme.colors.text.primary;
     }

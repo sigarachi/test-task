@@ -1,8 +1,6 @@
 import { CompanyService } from "@shared/api/services/company";
-import { Card } from "@shared/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { CardList } from "./ui/card-list";
-import { TextBlock } from "@shared/ui/text";
 import { Sorting } from "./ui/sorting";
 import { Divider } from "@shared/ui/divider";
 import { FlexLayout } from "@shared/ui/flex";
@@ -65,33 +63,11 @@ export const CompanyList = () => {
         />
       </FlexLayout>
 
-      {tab === "all" && (
-        <CardList>
-          {data?.map((item) => (
-            <Card
-              title={<TextBlock variant="body1">{item.title}</TextBlock>}
-              onFavorite={(value) => handleFavorite(value, item)}
-              isCardFavorite={isFavorite(item)}
-            >
-              <TextBlock variant="body1">{item.title}</TextBlock>
-            </Card>
-          ))}
-        </CardList>
-      )}
-
-      {tab === "favorite" && (
-        <CardList>
-          {favoriteList.map((item) => (
-            <Card
-              title={<TextBlock variant="body1">{item.title}</TextBlock>}
-              onFavorite={(value) => handleFavorite(value, item)}
-              isCardFavorite={isFavorite(item)}
-            >
-              <TextBlock variant="body1">{item.title}</TextBlock>
-            </Card>
-          ))}
-        </CardList>
-      )}
+      <CardList
+        list={tab === "all" ? (data ?? []) : favoriteList}
+        isFavorite={isFavorite}
+        handleFavorite={handleFavorite}
+      />
     </FlexLayout>
   );
 };
