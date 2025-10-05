@@ -25,10 +25,6 @@ export const CompanyList = () => {
     retryOnMount: false,
   });
 
-  if (isLoading) {
-    return <>Loading...</>;
-  }
-
   return (
     <FlexLayout
       direction="column"
@@ -65,6 +61,7 @@ export const CompanyList = () => {
 
       <CardList
         list={tab === "all" ? (data ?? []) : favoriteList}
+        isLoading={isLoading}
         isFavorite={isFavorite}
         handleFavorite={handleFavorite}
       />
