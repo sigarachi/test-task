@@ -13,6 +13,8 @@ export interface FlexProps extends React.ComponentProps<"div"> {
   borderRight?: string;
   children?: React.ReactElement | React.ReactNode;
   overflow?: string;
+  overflowX?: string;
+  overflowY?: string;
   maxHeight?: string;
   minHeight?: string;
   backgroudColor?: string;

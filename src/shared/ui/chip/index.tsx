@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 
 import {
   ChipDropdownContent,
@@ -17,6 +17,8 @@ export const Chip: React.FC<ChipProps> = ({
   options,
   children,
 }): React.ReactElement => {
+  const id = useMemo(() => crypto.randomUUID(), []);
+
   const [isOpened, setIsOpened] = useState(false);
 
   const theme = useTheme();
@@ -42,43 +44,45 @@ export const Chip: React.FC<ChipProps> = ({
   );
 
   return (
-    <ChipWrapper>
-      <ChipButton
-        isOpened={isOpened}
-        onClick={() => setIsOpened((prev) => !prev)}
-      >
-        <div>
-          {selectedOption.current ? (
-            <TextBlock variant="h6">{selectedOption.current.title}</TextBlock>
-          ) : (
-            children
-          )}
-        </div>
-        <div>
-          <ArrowIcon
-            width={12}
-            height={12}
-            color={theme.colors.accent.base}
-            style={{
-              transform: isOpened ? "rotate(-180deg)" : "rotate(0deg)",
-              transition: "0.4s",
-            }}
-          />
-        </div>
-      </ChipButton>
-      <ChipDropdownContent isOpened={isOpened}>
-        {options.map((option) => (
-          <ChipDropdownOption onClick={() => handleSelect(option)}>
-            <div>
-              {selectedOption.current &&
-                selectedOption.current.value === option.value && (
-                  <CheckIcon width={18} height={18} color="black" />
-                )}
-            </div>
-            {option.title}
-          </ChipDropdownOption>
-        ))}
-      </ChipDropdownContent>
-    </ChipWrapper>
+    <>
+      <ChipWrapper id={`chip-${id}`}>
+        <ChipButton
+          isOpened={isOpened}
+          onClick={() => setIsOpened((prev) => !prev)}
+        >
+          <div>
+            {selectedOption.current ? (
+              <TextBlock variant="h6">{selectedOption.current.title}</TextBlock>
+            ) : (
+              children
+            )}
+          </div>
+          <div>
+            <ArrowIcon
+              width={12}
+              height={12}
+              color={theme.colors.accent.base}
+              style={{
+                transform: isOpened ? "rotate(-180deg)" : "rotate(0deg)",
+                transition: "0.4s",
+              }}
+            />
+          </div>
+        </ChipButton>
+        <ChipDropdownContent isOpened={isOpened}>
+          {options.map((option) => (
+            <ChipDropdownOption onClick={() => handleSelect(option)}>
+              <div>
+                {selectedOption.current &&
+                  selectedOption.current.value === option.value && (
+                    <CheckIcon width={18} height={18} color="black" />
+                  )}
+              </div>
+              {option.title}
+            </ChipDropdownOption>
+          ))}
+        </ChipDropdownContent>
+      </ChipWrapper>
+    </>
   );
 };

@@ -8,8 +8,15 @@ import { Divider } from "@shared/ui/divider";
 import { FlexLayout } from "@shared/ui/flex";
 import useMedia from "use-media";
 import { useTheme } from "@emotion/react";
+import { Tabs } from "@shared/ui/tabs";
+import { useState } from "react";
+import { useFavorites } from "@shared/hooks/use-favorites";
 
 export const CompanyList = () => {
+  const [tab, setTab] = useState<string>("all");
+
+  const { favoriteList, isFavorite, handleFavorite } = useFavorites();
+
   const theme = useTheme();
 
   const isMobile = useMedia({ maxWidth: theme.breakPoints.mobile });
@@ -25,29 +32,66 @@ export const CompanyList = () => {
   }
 
   return (
-    <FlexLayout direction="column" justify="center" overflow="hidden">
+    <FlexLayout
+      direction="column"
+      justify="center"
+      overflow="hidden"
+      minHeight="100%"
+    >
       <FlexLayout
-        width="100%"
         direction="row"
         gap="8px"
         align="center"
         padding={`16px ${isMobile ? "8px" : "10vw"}`}
-        overflow="auto"
+        overflowX="auto"
       >
         <Sorting />
       </FlexLayout>
       <Divider />
-      <CardList>
-        {data?.map((item) => (
-          <Card
-            title={<TextBlock variant="body1">{item.title}</TextBlock>}
-            onFavorite={() => {}}
-            isCardFavorite={false}
-          >
-            <TextBlock variant="body1">{item.title}</TextBlock>
-          </Card>
-        ))}
-      </CardList>
+      <FlexLayout
+        direction="row"
+        gap="8px"
+        align="center"
+        padding={`16px ${isMobile ? "8px" : "10vw"}`}
+        overflowX="auto"
+      >
+        {" "}
+        <Tabs
+          tabs={[
+            { title: "Все", value: "all" },
+            { title: "Избранное", value: "favorite" },
+          ]}
+          onChange={(option) => setTab(option.value)}
+        />
+      </FlexLayout>
+
+      {tab === "all" && (
+        <CardList>
+          {data?.map((item) => (
+            <Card
+              title={<TextBlock variant="body1">{item.title}</TextBlock>}
+              onFavorite={(value) => handleFavorite(value, item)}
+              isCardFavorite={isFavorite(item)}
+            >
+              <TextBlock variant="body1">{item.title}</TextBlock>
+            </Card>
+          ))}
+        </CardList>
+      )}
+
+      {tab === "favorite" && (
+        <CardList>
+          {favoriteList.map((item) => (
+            <Card
+              title={<TextBlock variant="body1">{item.title}</TextBlock>}
+              onFavorite={(value) => handleFavorite(value, item)}
+              isCardFavorite={isFavorite(item)}
+            >
+              <TextBlock variant="body1">{item.title}</TextBlock>
+            </Card>
+          ))}
+        </CardList>
+      )}
     </FlexLayout>
   );
 };

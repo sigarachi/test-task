@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const ChipWrapper = styled.div`
   position: relative;
   display: inline-block;
+  isolation: isolate;
 `;
 
 export const ChipButton = styled.div<{ isOpened: boolean }>`
@@ -29,7 +30,6 @@ export const ChipButton = styled.div<{ isOpened: boolean }>`
 export const ChipDropdownContent = styled.div<{ isOpened: boolean }>`
   width: 100%;
 
-  top: 100%;
   display: ${(props) => (props.isOpened ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
@@ -38,7 +38,7 @@ export const ChipDropdownContent = styled.div<{ isOpened: boolean }>`
   border-radius: 11px;
   padding: 4px;
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.06);
-  z-index: 1;
+  z-index: 9999;
 `;
 
 export const ChipDropdownOption = styled.div`
