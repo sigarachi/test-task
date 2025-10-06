@@ -4,6 +4,11 @@ export const ChipWrapper = styled.div`
   position: relative;
   display: inline-block;
   isolation: isolate;
+
+  & > * {
+    position: static;
+    overflow: visible;
+  }
 `;
 
 export const ChipButton = styled.div<{ isOpened: boolean }>`
@@ -33,6 +38,9 @@ export const ChipDropdownContent = styled.div<{ isOpened: boolean }>`
   display: ${(props) => (props.isOpened ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
+  left: 0;
+  top: 100%;
+  overflow-anchor: none;
   background-color: #fff;
   margin-top: 2px;
   border-radius: 11px;

@@ -1,5 +1,6 @@
 import { Chip } from "@shared/ui/chip";
 import { TextBlock } from "@shared/ui/text";
+import { CATEGORY_OPTIONS, CITY_OPTIONS } from "./constants";
 
 export const Sorting = () => {
   return (
@@ -13,10 +14,10 @@ export const Sorting = () => {
       >
         <TextBlock variant="h6">Сортировка</TextBlock>
       </Chip>
-      <Chip options={[]} onSelect={() => {}}>
+      <Chip options={CATEGORY_OPTIONS} onSelect={() => {}}>
         <TextBlock variant="h6">Категория</TextBlock>
       </Chip>
-      <Chip options={[]} onSelect={() => {}}>
+      <Chip options={CITY_OPTIONS} onSelect={() => {}}>
         <TextBlock variant="h6">Город</TextBlock>
       </Chip>
     </>
