@@ -11,6 +11,7 @@ export const TextVariants = {
 
 export const TextColors = {
   primary: "primary",
+  inverted: "inverted",
   description: "description",
   link: "link",
 };

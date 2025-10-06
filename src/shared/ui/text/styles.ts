@@ -12,6 +12,8 @@ export const TextWrapper = styled("div")<
     switch (textColor) {
       case "link":
         return theme.colors.accent.base;
+      case "inverted":
+        return theme.colors.text.inverted;
       case "description":
         return theme.colors.text.secondary;
       default:

@@ -2,6 +2,7 @@ import { useTheme } from "@emotion/react";
 import { CompanyList } from "@features/company-list";
 import { Navigation } from "@features/navigation";
 import { FlexLayout } from "@shared/ui/flex";
+import { Footer } from "@shared/ui/footer";
 import React from "react";
 
 export const Main = (): React.ReactElement => {
@@ -15,6 +16,7 @@ export const Main = (): React.ReactElement => {
     >
       <Navigation />
       <CompanyList />
+      <Footer />
     </FlexLayout>
   );
 };
