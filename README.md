@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Test Task Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проект для выполнения тестового задания, построенный на стеке React с TypeScript.
 
-Currently, two official plugins are available:
+## Используемые библиотеки
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19.1.1** - Библиотека для построения пользовательских интерфейсов
+- **TypeScript** - Статическая типизация для JavaScript
+- **Vite 7.1.7** - Быстрый сборщик и инструмент для разработки
+- **Emotion** - CSS-in-JS библиотека для стилизации
+- **React Router DOM 7.9.3** - Маршрутизация для React приложений
+- **TanStack React Query 5.90.2** - Управление состоянием серверных данных
+- **Axios** - HTTP-клиент для выполнения запросов
 
-## React Compiler
+## Установка и запуск
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Требования к окружению
 
-## Expanding the ESLint configuration
+- Node.js: 24.3.0
+- npm: 11.4.2
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Установка зависимостей
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Запуск в режиме разработки
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Приложение будет доступно по адресу `http://localhost:5173`
+
+### Сборка проекта
+
+```bash
+npm run build
+```
+
+Собирает проект для продакшена в папку `dist/`
+
+### Превью собранного проекта
+
+```bash
+npm run preview
+```
+
+### Линтинг кода
+
+```bash
+npm run lint
 ```
