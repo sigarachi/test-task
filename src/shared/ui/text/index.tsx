@@ -7,6 +7,7 @@ export const TextBlock: React.FC<TextProps> = ({
   color = "primary",
   textAlign = "start",
   bold = false,
+  clamp = false,
   children,
 }) => {
   const Component = variant !== "body1" && variant !== "body2" ? variant : "p";
@@ -17,6 +18,7 @@ export const TextBlock: React.FC<TextProps> = ({
       textAlign={textAlign}
       bold={bold}
       textColor={color}
+      clamp={clamp}
     >
       <Component>{children}</Component>
     </TextWrapper>

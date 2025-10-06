@@ -22,4 +22,5 @@ export interface TextProps {
   textAlign?: string;
   children: React.ReactNode;
   bold?: boolean;
+  clamp?: boolean;
 }

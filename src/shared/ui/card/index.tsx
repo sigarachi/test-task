@@ -36,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
       </CardTopWrapper>
       <CardBodyWrapper>{children}</CardBodyWrapper>
       {footerButton && (
-        <CardFooterWrapper>
+        <CardFooterWrapper onClick={footerButton.onClick}>
           <Divider width="100%" />
           {footerButton.text}
         </CardFooterWrapper>

@@ -4,6 +4,7 @@ import type { TextColors, TextProps } from "./interfaces";
 export const TextWrapper = styled("div")<
   TextProps & {
     textColor: keyof typeof TextColors;
+    clamp: boolean;
   }
 >`
   width: fit-content;
@@ -22,6 +23,12 @@ export const TextWrapper = styled("div")<
   }};
 
   text-align: ${(props) => props.textAlign};
+
+  ${(props) =>
+    props.clamp &&
+    `overflow: hidden;
+  max-width: 15ch;
+  white-space: nowrap;`}
 
   display: flex;
   flex-wrap: wrap;
